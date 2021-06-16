@@ -8,6 +8,8 @@ import requests
 bot = commands.Bot(command_prefix="!")
 TOKEN = os.getenv("DISCORD_TOKEN")
 
+txt = requests.get("https://raw.githubusercontent.com/AsianIncest/discord-py-heroku/master/bot/fillter.txt").text
+
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user.name}({bot.user.id})")
@@ -36,8 +38,8 @@ async def mat(ctx):
         return
     await ctx.message.delete()
     author = ctx.message.author.mention
-    fillter = open("fillter.txt", "r", encoding="utf-8")
-    txt = fillter.read()
+    #    fillter = open("fillter.txt", "r", encoding="utf-8")
+    #    txt = fillter.read()
     txt_list = txt.split(", ")
     mat = txt_list[random.randint(0, len(txt_list) - 1)]
     await ctx.send(f"{author}, твоё слово: {mat}")
